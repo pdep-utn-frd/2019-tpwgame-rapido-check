@@ -3,7 +3,7 @@ import wollok.game.*
 program juego {
 	//VENTANA
 	game.title("ASD")
-	game.height(13)
+	game.height(14)
 	game.width(25)
 	game.boardGround("background.jpeg")
 	
