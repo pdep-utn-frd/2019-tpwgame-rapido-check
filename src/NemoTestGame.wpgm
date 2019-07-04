@@ -1,4 +1,5 @@
 import wollok.game.*
+import Peces.*
 
 program juego {
 	//VENTANA
@@ -8,7 +9,7 @@ program juego {
 	game.boardGround("background.jpeg")
 	
 	//VISUALES
-	game.addVisualIn()
+	game.addVisual(doryBaby)
 	//TECLADO
 	
 	//START
