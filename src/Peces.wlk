@@ -15,10 +15,7 @@ object gameControl {
 		posY.remove(y)
 		imagenActual = imagenes.anyOne()
 		imagenes.remove(imagenActual)
-		
-		
-		
-		
+
 		
 	}
 }
