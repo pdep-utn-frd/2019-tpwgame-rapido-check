@@ -2,7 +2,7 @@ import wollok.game.*
 
 
 object gameControl {
-	var imagenes = ["DoryBaby.jpg", "asda.jpg"]
+	
 }
 
 object doryBaby {
