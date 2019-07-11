@@ -2,11 +2,14 @@ import wollok.game.*
 
 
 object gameControl {
-	
+	method imagen() = "nemoCarta.jpg"
 }
 
 object doryBaby {
 	method imagen() = "DoryBaby.jpg"
+	method modoDarVuelta() {
+		return imagen() = "DoryBaby.jpg"
+	}
 }
 
 object dorys {

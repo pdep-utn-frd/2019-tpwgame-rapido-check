@@ -10,7 +10,10 @@ program juego {
 	
 	//VISUALES
 	game.addVisual(doryBaby)
+	
 	//TECLADO
+	keyboard.up()onPressDo()
+	
 	
 	//START
 	game.start()
