@@ -19,7 +19,7 @@ program juego {
 	game.addVisualIn(cartaNormal, game.at(19,7))
 	
 	
-	//TECLADO
+	//TECLADOO
 	//keyboard.up()onPressDo()
 	
 	

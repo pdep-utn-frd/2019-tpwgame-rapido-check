@@ -6,7 +6,6 @@ object gameControl {
 	var posX = [1, 7, 13, 19]
 	var posY = [1, 7, 13]
 	var imagenActual
-	//var bandera
 	
 	method position() {
 		var x = posX.anyOne()
