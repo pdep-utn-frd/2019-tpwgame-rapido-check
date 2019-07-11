@@ -9,10 +9,18 @@ program juego {
 	game.boardGround("background.jpeg")
 	
 	//VISUALES
-	game.addVisual(doryBaby)
+	game.addVisualIn(cartaNormal, game.at(1,1))
+	game.addVisualIn(cartaNormal, game.at(1,7))
+	game.addVisualIn(cartaNormal, game.at(7,1))
+	game.addVisualIn(cartaNormal, game.at(7,7))
+	game.addVisualIn(cartaNormal, game.at(13,1))
+	game.addVisualIn(cartaNormal, game.at(13,7))
+	game.addVisualIn(cartaNormal, game.at(19,1))
+	game.addVisualIn(cartaNormal, game.at(19,7))
+	
 	
 	//TECLADO
-	keyboard.up()onPressDo()
+	//keyboard.up()onPressDo()
 	
 	
 	//START

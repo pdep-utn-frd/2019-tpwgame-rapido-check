@@ -2,40 +2,50 @@ import wollok.game.*
 
 
 object gameControl {
-	method imagen() = "nemoCarta.jpg"
+	var imagenes = ["DoryBaby.jpg", "Dorys.jpg", "parejaPeces.jpg", "pezGlobo.jpg"]
+	var posX = [1, 7, 13, 19]
+	var posY = [1, 7, 13]
+	var imagenActual
+	//var bandera
+	
+	method position() {
+		var x = posX.anyOne()
+		var y = posY.anyOne()
+		posX.remove(x)
+		posY.remove(y)
+		imagenActual = imagenes.anyOne()
+		imagenes.remove(imagenActual)
+		
+		
+		
+		
+		
+	}
+}
+
+object cartaNormal {
+	method image() = "nemoCarta.jpg"
 }
 
 object doryBaby {
 	method imagen() = "DoryBaby.jpg"
-	method modoDarVuelta() {
-		return imagen() = "DoryBaby.jpg"
+	//method modoDarVuelta() {
+		//return imagen() = "DoryBaby.jpg"
+	//}
+}
+
+class Cartas {
+	
+	var posX = [1, 7, 13, 19]
+	var posY = [1, 7, 13]
+	var imagen
+
+	
+	method image() = imagen
+	
+	method position() {
+		var x = posX.anyOne()
+		var y = posY.anyOne()
+		return game.at(x, y)
 	}
-}
-
-object dorys {
-	method imagen() = "Dorys.jpg"
-}
-
-object nemoDory {
-	method imagen() = "NemoDory.jpg"
-}
-
-object pezGlobo {
-	method imagen() = "pezGlobo.jpg"
-}
-
-object tiburon {
-	method imagen() = "tiburon.jpg"
-}
-
-object tortuga {
-	method imagen() = "Tortuga.jpg"
-}
-
-object tortugaBaby {
-	method imagen() = "TortugaBaby.jpg"
-}
-
-object parejaPeces {
-	method imagen() = "parejaPeces.jpg"
 }
