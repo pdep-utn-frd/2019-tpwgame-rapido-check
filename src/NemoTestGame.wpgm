@@ -3,7 +3,7 @@ import Peces.*
 
 program juego {
 	//VENTANA
-	game.title("ASD")
+	game.title("NemoTest")
 	game.height(14)
 	game.width(25)
 	game.boardGround("background.jpeg")
@@ -18,9 +18,13 @@ program juego {
 	game.addVisualIn(cartaNormal, game.at(19,1))
 	game.addVisualIn(cartaNormal, game.at(19,7))
 	
+	//CARTAS
 	
-	//TECLADOO
-	//keyboard.up()onPressDo()
+	game.addVisual(new Cartas(numero = 1))
+	
+	
+	//TECLADO
+	//keyboard.num1().onPressDo({ doryBaby.darseVuelta(1,1) })
 	
 	
 	//START
