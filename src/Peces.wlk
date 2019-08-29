@@ -6,13 +6,13 @@ object cartaNormal {
 
 class Cartas {
 	
-	
-	
+	const x 
+	const y
 	const numero
 	
 	method image () = "carta" + numero.toString() + ".jpg"
 	
-	method position () = game.at(1,7)
+	method position () = game.at(x,y)
 		
 }
 //object doryBaby {
