@@ -2,14 +2,19 @@ import wollok.game.*
 
 //Aplicando lo visto en clase
 
-//class Carta{
-	//var property position
-	//var property posX = [1, 7, 13, 19]
-	//var property posY = [1, 7, 13]
-	//var property personajes = ["carta1", "carta2", "carta3", "carta4","carta1", "carta2", "carta3", "carta4"]
+class Carta{
 	
-	//method image() = "nemoCarta.jpg"
-//}
+	var property posX = [1, 7, 13, 19]
+	var property posY = [1, 7, 13]
+	var property nombre
+	
+	
+	var property position = game.at(posX.anyOne(),posY.anyOne())
+	
+	method image () = nombre + ".jpg"
+	
+
+}
 
 
 

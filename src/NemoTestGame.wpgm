@@ -11,19 +11,19 @@ program juego {
 	//VISUALES
 	
 	//Asignarle a cada personaje su carta con su posicion
-
-//personajes.forEach{ personaje => x = new Carta(posX = posX.anyOne(), posY = posY.anyOne()
-	//game.addVisual(x)
-//}
+var personajes = ["carta1", "carta2", "carta3", "carta4","carta1", "carta2", "carta3", "carta4"]
+personajes.forEach{ x => new Carta(nombre = x)
 	
-	game.addVisualIn(nemoCarta, game.at(1,1))
-	game.addVisualIn(nemoCarta, game.at(1,7))
-	game.addVisualIn(nemoCarta, game.at(7,1))
-	game.addVisualIn(nemoCarta, game.at(7,7))
-	game.addVisualIn(nemoCarta, game.at(13,1))
-	game.addVisualIn(nemoCarta, game.at(13,7))
-	game.addVisualIn(nemoCarta, game.at(19,1))
-	game.addVisualIn(nemoCarta, game.at(19,7))
+}
+	
+//	game.addVisualIn(nemoCarta, game.at(1,1))
+//	game.addVisualIn(nemoCarta, game.at(1,7))
+//	game.addVisualIn(nemoCarta, game.at(7,1))
+//	game.addVisualIn(nemoCarta, game.at(7,7))
+//	game.addVisualIn(nemoCarta, game.at(13,1))
+//	game.addVisualIn(nemoCarta, game.at(13,7))
+//	game.addVisualIn(nemoCarta, game.at(19,1))
+//	game.addVisualIn(nemoCarta, game.at(19,7))
 	
 	//CARTAS
 	
