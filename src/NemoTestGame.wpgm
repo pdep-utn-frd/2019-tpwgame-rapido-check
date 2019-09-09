@@ -9,14 +9,21 @@ program juego {
 	game.boardGround("background.jpeg")
 	
 	//VISUALES
-	game.addVisualIn(cartaNormal, game.at(1,1))
-	game.addVisualIn(cartaNormal, game.at(1,7))
-	game.addVisualIn(cartaNormal, game.at(7,1))
-	game.addVisualIn(cartaNormal, game.at(7,7))
-	game.addVisualIn(cartaNormal, game.at(13,1))
-	game.addVisualIn(cartaNormal, game.at(13,7))
-	game.addVisualIn(cartaNormal, game.at(19,1))
-	game.addVisualIn(cartaNormal, game.at(19,7))
+	
+	//Asignarle a cada personaje su carta con su posicion
+
+//personajes.forEach{ personaje => x = new Carta(posX = posX.anyOne(), posY = posY.anyOne()
+	//game.addVisual(x)
+//}
+	
+	game.addVisualIn(nemoCarta, game.at(1,1))
+	game.addVisualIn(nemoCarta, game.at(1,7))
+	game.addVisualIn(nemoCarta, game.at(7,1))
+	game.addVisualIn(nemoCarta, game.at(7,7))
+	game.addVisualIn(nemoCarta, game.at(13,1))
+	game.addVisualIn(nemoCarta, game.at(13,7))
+	game.addVisualIn(nemoCarta, game.at(19,1))
+	game.addVisualIn(nemoCarta, game.at(19,7))
 	
 	//CARTAS
 	
