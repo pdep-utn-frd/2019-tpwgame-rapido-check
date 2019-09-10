@@ -11,30 +11,26 @@ program juego {
 	//VISUALES
 	
 	//Asignarle a cada personaje su carta con su posicion
-var personajes = ["carta1", "carta2", "carta3", "carta4","carta1", "carta2", "carta3", "carta4"]
-personajes.forEach{ x => new Carta(nombre = x)
 	
-}
+
 	
-//	game.addVisualIn(nemoCarta, game.at(1,1))
-//	game.addVisualIn(nemoCarta, game.at(1,7))
-//	game.addVisualIn(nemoCarta, game.at(7,1))
-//	game.addVisualIn(nemoCarta, game.at(7,7))
-//	game.addVisualIn(nemoCarta, game.at(13,1))
-//	game.addVisualIn(nemoCarta, game.at(13,7))
-//	game.addVisualIn(nemoCarta, game.at(19,1))
-//	game.addVisualIn(nemoCarta, game.at(19,7))
+	var personajes = ["carta01", "carta02", "carta03", "carta04","carta1", "carta2", "carta3", "carta4"]
+		
 	
+//	personajes.forEach {carta => game.addVisualIn(new Carta( nombre = carta),gameControl.position())
+//	}
+	
+
 	//CARTAS
 	
-	game.addVisual(new Cartas(numero = 1, x= 1, y = 7))
-	game.addVisual(new Cartas(numero = 2, x= 7, y = 1))
-	game.addVisual(new Cartas(numero = 3, x= 13, y = 7))
-	game.addVisual(new Cartas(numero = 4, x= 19, y = 7))
+//	game.addVisual(new Cartas(numero = 1, x= 1, y = 7))
+//	game.addVisual(new Cartas(numero = 2, x= 7, y = 1))
+//	game.addVisual(new Cartas(numero = 3, x= 13, y = 7))
+//	game.addVisual(new Cartas(numero = 4, x= 19, y = 7))
 	
 	
 	//TECLADO
-	//keyboard.num1().onPressDo({ doryBaby.darseVuelta(1,1) })
+	keyboard.enter().onPressDo({ gameControl.iniciar(personajes)})
 	
 	
 	//START

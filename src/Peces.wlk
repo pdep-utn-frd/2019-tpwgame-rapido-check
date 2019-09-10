@@ -1,75 +1,37 @@
 import wollok.game.*
 
-//Aplicando lo visto en clase
 
-class Carta{
-	
-	var property posX = [1, 7, 13, 19]
-	var property posY = [1, 7, 13]
+class Carta{	
 	var property nombre
+	var property posicion
 	
+	method image () = nombre + ".jpg"	
+	method position() = posicion
 	
-	var property position = game.at(posX.anyOne(),posY.anyOne())
-	
-	method image () = nombre + ".jpg"
-	
-
 }
-
-
-
-
-object cartaNormal {
-	method image() = "nemoCarta.jpg"
-}
-
-class Cartas {
+object gameControl {
+//	var cartas = [
+//		new Carta (nombre = "carta01", posicion = self.position()),
+//		new Carta (nombre = "carta1", posicion = self.position()),
+//		new Carta (nombre = "carta02", posicion = self.position()),
+//		new Carta (nombre = "carta2", posicion = self.position()),
+//		new Carta (nombre = "carta03", posicion = self.position()),
+//		new Carta (nombre = "carta3", posicion = self.position()),
+//		new Carta (nombre = "carta04", posicion = self.position()),
+//		new Carta (nombre = "carta4", posicion = self.position())	
+//	]
+	var combinaciones = [game.at(1,1), game.at(1,7), game.at(7,1), game.at(7,7), game.at(13,1), game.at(13,7), game.at(19,1), game.at(19,7)]
 	
-	const x 
-	const y
-	const numero
-	
-	method image () = "carta" + numero.toString() + ".jpg"
-	
-	method position () = game.at(x,y)
-		
-}
-object doryBaby {
-
-	method darseVuelta(x,y){
-		return game.at(x,y)
-		//return image("DoryBaby.jpg")
+	method position() {
+		var x
+		x = combinaciones.anyOne()
+		combinaciones.remove(x)
+		return x		
 	}
 	
-	method position() = game.at(1,1)
+	method iniciar(personajes) {
+		return 	personajes.forEach {carta => game.addVisualIn(new Carta( nombre = carta, posicion = self.position()), carta.position())
+				}
+	}
 	
-	//method image() = "DoryBaby.jpg"
-	//method modoDarVuelta() {
-		//return imagen() = "DoryBaby.jpg"
-	//}
 }
-
-
-
-//object gameControl {
-	//var imagenes = ["DoryBaby.jpg", "Dorys.jpg", "parejaPeces.jpg", "pezGlobo.jpg"]
-	//var posX = [1, 7, 13, 19]
-	//var posY = [1, 7, 13]
-	//var imagenActual
-	
-	//method position() {
-		//var x = posX.anyOne()
-		//var y = posY.anyOne()
-		//posX.remove(x)
-		//posY.remove(y)
-		//imagenActual = imagenes.anyOne()
-		//imagenes.remove(imagenActual)
-
-		
-	//}
-//}
-
-
-
-
-
