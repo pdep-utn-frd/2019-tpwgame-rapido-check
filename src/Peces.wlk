@@ -1,15 +1,29 @@
 import wollok.game.*
 
-
+object nemoCarta {
+	method image () = "nemoCarta.jpg"
+}
 class Carta{	
 	var property nombre
-	var property posicion
+	var property position
+	var property arriba = false
+	//var property posicion
 	
-	method image () = nombre + ".jpg"	
-	method position() = posicion
+	method image () = if (arriba) nombre + ".jpg" else "nemoCarta.jpg"	
+	method darVuelta() {
+		arriba = not arriba
+	}
 	
 }
 object gameControl {
+	
+	var cartas = []
+
+	
+	var personajes = ["carta01", "carta02", "carta03", "carta04","carta1", "carta2", "carta3", "carta4"]
+		
+	
+	
 //	var cartas = [
 //		new Carta (nombre = "carta01", posicion = self.position()),
 //		new Carta (nombre = "carta1", posicion = self.position()),
@@ -28,10 +42,26 @@ object gameControl {
 		combinaciones.remove(x)
 		return x		
 	}
-	
-	method iniciar(personajes) {
-		return 	personajes.forEach {carta => game.addVisualIn(new Carta( nombre = carta, posicion = self.position()), carta.position())
-				}
+	method inicializar (){
+		
+	personajes.forEach {carta => self.asignarPosicion(carta)}
 	}
 	
-}
+	method asignarPosicion(nombreCarta) {
+		const carta = new Carta( nombre = nombreCarta, position = self.position())
+		cartas.add(carta)
+		game.addVisual(carta)
+	}
+	
+	method darVueltaTodo(){
+		cartas.forEach {carta => carta.darVuelta()}
+	}
+	}
+	
+	
+//	method iniciar(personajes) {
+//		return 	personajes.forEach {carta => game.addVisualIn(new Carta( nombre = carta, posicion = self.position()), carta.position())
+//				}
+//	}
+	
+

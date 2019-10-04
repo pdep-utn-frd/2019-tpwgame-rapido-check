@@ -11,15 +11,9 @@ program juego {
 	//VISUALES
 	
 	//Asignarle a cada personaje su carta con su posicion
+	gameControl.inicializar()
 	
 
-	
-	var personajes = ["carta01", "carta02", "carta03", "carta04","carta1", "carta2", "carta3", "carta4"]
-		
-	
-//	personajes.forEach {carta => game.addVisualIn(new Carta( nombre = carta),gameControl.position())
-//	}
-	
 
 	//CARTAS
 	
@@ -30,7 +24,7 @@ program juego {
 	
 	
 	//TECLADO
-	keyboard.enter().onPressDo({ gameControl.iniciar(personajes)})
+	keyboard.enter().onPressDo({ gameControl.darVueltaTodo()})
 	
 	
 	//START
