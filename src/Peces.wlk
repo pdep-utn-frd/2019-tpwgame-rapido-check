@@ -1,8 +1,5 @@
 import wollok.game.*
 
-object nemoCarta {
-	method image () = "nemoCarta.jpg"
-}
 class Carta{	
 	var property nombre
 	var property position
@@ -20,20 +17,18 @@ object gameControl {
 	var cartas = []
 
 	
-	var personajes = ["carta01", "carta02", "carta03", "carta04","carta1", "carta2", "carta3", "carta4"]
+	var personajes = [
+		"carta01", 
+		"carta02",
+		"carta03", 
+		"carta04",
+		"carta1", 
+		"carta2", 
+		"carta3", 
+		"carta4"
+	]
 		
 	
-	
-//	var cartas = [
-//		new Carta (nombre = "carta01", posicion = self.position()),
-//		new Carta (nombre = "carta1", posicion = self.position()),
-//		new Carta (nombre = "carta02", posicion = self.position()),
-//		new Carta (nombre = "carta2", posicion = self.position()),
-//		new Carta (nombre = "carta03", posicion = self.position()),
-//		new Carta (nombre = "carta3", posicion = self.position()),
-//		new Carta (nombre = "carta04", posicion = self.position()),
-//		new Carta (nombre = "carta4", posicion = self.position())	
-//	]
 	var combinaciones = [
 		game.at(1,1), 
 		game.at(1,7), 
@@ -51,9 +46,9 @@ object gameControl {
 		combinaciones.remove(x)
 		return x		
 	}
-	method inicializar (){
+	method inicializar() {
 		
-	personajes.forEach {carta => self.asignarPosicion(carta)}
+		personajes.forEach {carta => self.asignarPosicion(carta)}
 	
 	}
 	
@@ -63,7 +58,17 @@ object gameControl {
 		game.addVisual(carta)
 	}
 	
-	method darVueltaTodo(){
+	method darVueltaCarta(posicion) {
+		
+		cartas.get(posicion).darVuelta()
+			
+			
+		
+			
+		
+	}
+	
+	method darVueltaTodo() {
 		cartas.forEach {carta => carta.darVuelta()}
 	}
 	
