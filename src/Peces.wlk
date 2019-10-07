@@ -7,9 +7,9 @@ class Carta{
 	var property nombre
 	var property position
 	var property arriba = false
-	//var property posicion
 	
 	method image () = if (arriba) nombre + ".jpg" else "nemoCarta.jpg"	
+	
 	method darVuelta() {
 		arriba = not arriba
 	}
@@ -34,7 +34,16 @@ object gameControl {
 //		new Carta (nombre = "carta04", posicion = self.position()),
 //		new Carta (nombre = "carta4", posicion = self.position())	
 //	]
-	var combinaciones = [game.at(1,1), game.at(1,7), game.at(7,1), game.at(7,7), game.at(13,1), game.at(13,7), game.at(19,1), game.at(19,7)]
+	var combinaciones = [
+		game.at(1,1), 
+		game.at(1,7), 
+		game.at(7,1), 
+		game.at(7,7), 
+		game.at(13,1), 
+		game.at(13,7), 
+		game.at(19,1), 
+		game.at(19,7)
+	]
 	
 	method position() {
 		var x
@@ -45,6 +54,7 @@ object gameControl {
 	method inicializar (){
 		
 	personajes.forEach {carta => self.asignarPosicion(carta)}
+	
 	}
 	
 	method asignarPosicion(nombreCarta) {
@@ -56,12 +66,9 @@ object gameControl {
 	method darVueltaTodo(){
 		cartas.forEach {carta => carta.darVuelta()}
 	}
-	}
 	
 	
-//	method iniciar(personajes) {
-//		return 	personajes.forEach {carta => game.addVisualIn(new Carta( nombre = carta, posicion = self.position()), carta.position())
-//				}
-//	}
+}
 	
+
 
