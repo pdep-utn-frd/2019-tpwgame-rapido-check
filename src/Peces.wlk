@@ -55,16 +55,12 @@ object gameControl {
 		game.addVisual(carta)
 	}
 	
-	//method darVueltaCarta(posicion) {
-		//cartas.get(posicion).darVuelta()
-	//}
+	method darVueltaCarta(posicion) {
+		cartas.get(posicion).darVuelta()
+	}
 	
 	method darVueltaTodo() {
 		cartas.forEach {carta => carta.darVuelta()}
-	}
-	
-	method darVueltaCarta(numero){
-		return combinaciones.take(numero).darVuelta()
 	}
 }
 	
