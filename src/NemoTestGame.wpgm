@@ -2,6 +2,7 @@ import wollok.game.*
 import Peces.*
 
 program juego {
+	
 	//VENTANA
 	game.title("NemoTest")
 	game.height(14)

@@ -9,14 +9,13 @@ class Carta{
 	
 	method darVuelta() {
 		arriba = not arriba
-	}
-	
+	}	
 }
+
 object gameControl {
 	
 	var cartas = []
 
-	
 	var personajes = [
 		"carta01", 
 		"carta02",
@@ -27,9 +26,8 @@ object gameControl {
 		"carta3", 
 		"carta4"
 	]
-		
-	
-	var combinaciones = [
+
+	var property combinaciones = [
 		game.at(1,1), 
 		game.at(1,7), 
 		game.at(7,1), 
@@ -38,18 +36,17 @@ object gameControl {
 		game.at(13,7), 
 		game.at(19,1), 
 		game.at(19,7)
-	]
-	
+	]	
+
 	method position() {
 		var x
 		x = combinaciones.anyOne()
 		combinaciones.remove(x)
 		return x		
 	}
-	method inicializar() {
-		
-		personajes.forEach {carta => self.asignarPosicion(carta)}
 	
+	method inicializar() {
+		personajes.forEach {carta => self.asignarPosicion(carta)}
 	}
 	
 	method asignarPosicion(nombreCarta) {
@@ -58,21 +55,17 @@ object gameControl {
 		game.addVisual(carta)
 	}
 	
-	method darVueltaCarta(posicion) {
-		
-		cartas.get(posicion).darVuelta()
-			
-			
-		
-			
-		
-	}
+	//method darVueltaCarta(posicion) {
+		//cartas.get(posicion).darVuelta()
+	//}
 	
 	method darVueltaTodo() {
 		cartas.forEach {carta => carta.darVuelta()}
 	}
 	
-	
+	method darVueltaCarta(numero){
+		return combinaciones.take(numero).darVuelta()
+	}
 }
 	
 
