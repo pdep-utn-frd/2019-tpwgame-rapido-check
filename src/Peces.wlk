@@ -56,8 +56,10 @@ object gameControl {
 	}
 	
 	method darVueltaCarta(posicion) {
-		cartas.get(posicion).darVuelta()
-	}
+		var pos = combinaciones.get(posicion)
+		cartas.find{x => x.position() == pos}.darVuelta()
+		
+			}
 	
 	method darVueltaTodo() {
 		cartas.forEach {carta => carta.darVuelta()}
