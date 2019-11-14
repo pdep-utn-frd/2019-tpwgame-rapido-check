@@ -7,8 +7,9 @@ class Carta{
 	
 	method image () = if (arriba) nombre + ".jpg" else "nemoCarta.jpg"	
 	
-	method darVuelta() {
+	method darVuelta(x) {
 		arriba = not arriba
+		game.schedule(5000, { x => x.arriba(not arriba)  })
 	}	
 }
 
@@ -36,12 +37,15 @@ object gameControl {
 		game.at(13,7), 
 		game.at(19,1), 
 		game.at(19,7)
-	]	
+	]
+	
+	var property combinaciones2 = []
 
 	method position() {
 		var x
 		x = combinaciones.anyOne()
 		combinaciones.remove(x)
+		combinaciones2.add(x)
 		return x		
 	}
 	
@@ -56,8 +60,8 @@ object gameControl {
 	}
 	
 	method darVueltaCarta(posicion) {
-		var pos = combinaciones.get(posicion)
-		cartas.find{x => x.position() == pos}.darVuelta()
+		var pos = combinaciones2.get(posicion)
+		cartas.find{x => x.position() == pos}.darVuelta(x)
 		
 			}
 	
@@ -66,5 +70,5 @@ object gameControl {
 	}
 }
 	
-
+//SCHEDULE
 
