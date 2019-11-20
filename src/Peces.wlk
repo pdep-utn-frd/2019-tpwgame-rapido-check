@@ -9,8 +9,8 @@ class Carta{
 	
 	method darVuelta(x) {
 		arriba = not arriba
-		game.schedule(5000, { x => x.arriba(not arriba)  })
-	}	
+		//game.schedule(5000, { x => x.arriba(not arriba)  })
+	}
 }
 
 object gameControl {
@@ -67,6 +67,10 @@ object gameControl {
 	
 	method darVueltaTodo() {
 		cartas.forEach {carta => carta.darVuelta()}
+	}
+	
+	method timer(x){
+		game.schedule(5000,{=>x.darVueltaTodo()})
 	}
 }
 	
