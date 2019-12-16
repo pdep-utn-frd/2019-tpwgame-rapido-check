@@ -13,6 +13,7 @@ program juego {
 	
 	//Asignarle a cada personaje su carta con su posicion
 	gameControl.inicializar()
+	gameControl.timer()
 	
 
 
@@ -25,7 +26,7 @@ program juego {
 	
 	
 	//TECLADO
-	keyboard.enter().onPressDo({ gameControl.darVueltaTodo()})
+	//keyboard.enter().onPressDo({ gameControl.darVueltaTodo()})
 	keyboard.num1().onPressDo({ 
 		gameControl.darVueltaCarta(1) 
 		gameControl.bloquearODarVuelta()
