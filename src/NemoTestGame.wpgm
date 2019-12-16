@@ -55,13 +55,7 @@ program juego {
 			gameControl.chequearSiGano()
 		}
 	})
-	keyboard.num5().onPressDo({ 
-		if (gameControl.habilitado()) {
-			gameControl.darVueltaCarta(0) 
-			gameControl.bloquearODarVuelta()
-			gameControl.chequearSiGano()
-		}
-	})
+	keyboard.num5().onPressDo({ gameControl.jugar(0)})
 	keyboard.num6().onPressDo({ 
 		if (gameControl.habilitado()) {
 			gameControl.darVueltaCarta(2) 
@@ -83,6 +77,7 @@ program juego {
 			gameControl.chequearSiGano()
 		}
 	})
+	
 	
 	
 	//START

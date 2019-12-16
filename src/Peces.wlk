@@ -32,9 +32,6 @@ object gameControl {
 	var property habilitado = true
 	
 	var ultimoAlias = ""
-	
-	var gano = false
-
 	var personajes = [
 		"1carta", 
 		"2carta",
@@ -108,23 +105,33 @@ object gameControl {
 	}
 	
 	method chequearSiGano() {
-		if (cartas.filter({carta => not carta.arriba()}).size() == 0 && 
-			cartas.filter({carta => not carta.bloqueada()}).size() == 0
-		) {
-			gano = true
-			var pos = combinaciones2.get(1)
-			var primeraCarta = cartas.find{x => x.position() == pos}
-			var carta = new Carta(nombre = "NemoDory", position = game.at(8,5), arriba = true)
-			game.addVisual(carta)
-			game.say(carta, "GANASTE!")
-		}
+		 return cartas.all({carta => carta.arriba() && carta.bloqueada()})
+	}	 	
+	method mensajeGanador(){	 	 
+		var carta = new Carta(nombre = "NemoDory", position = game.at(8,5), arriba = true)
+		game.addVisual(carta) 
+		game.say(carta, "GANASTE!")
 	}
 	
 	method timer(){
+			var segundos = 22
 			var carta = new Carta(nombre = "perdiste", position = game.at(4,3), arriba = true)
-			game.schedule(12000, {if (not gano) {self.darVueltaTodo()}})
-			game.schedule(12000, {if (not gano) {game.addVisual(carta)}})
-			game.schedule(12500, {if (not gano) {game.say(carta, "PERDISTE")}})
+			game.schedule(segundos*1000, {if (not self.chequearSiGano()) {
+						self.darVueltaTodo() 
+						game.addVisual(carta)
+						}})
+//			game.schedule(segundos*1000, {if (not gano) {game.addVisual(carta)}})
+			game.schedule(segundos*1000 + 500, {if (not self.chequearSiGano()) {game.say(carta, "PERDISTE")}})
+	}
+	method jugar(pos) {
+		if (self.habilitado()) { 
+			self.darVueltaCarta(pos) 
+			self.bloquearODarVuelta()
+			if (self.chequearSiGano()) {
+				self.mensajeGanador()
+			}
+			   	
+		}
 	}
 }
 	
