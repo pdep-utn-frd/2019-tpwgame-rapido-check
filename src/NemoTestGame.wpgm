@@ -28,44 +28,60 @@ program juego {
 	//TECLADO
 	//keyboard.enter().onPressDo({ gameControl.darVueltaTodo()})
 	keyboard.num1().onPressDo({ 
-		gameControl.darVueltaCarta(1) 
-		gameControl.bloquearODarVuelta()
-		gameControl.chequearSiGano()
+		if (gameControl.habilitado()) {
+			gameControl.darVueltaCarta(1) 
+			gameControl.bloquearODarVuelta()
+			gameControl.chequearSiGano()
+		}
 	})
 	keyboard.num2().onPressDo({ 
-		gameControl.darVueltaCarta(3) 
-		gameControl.bloquearODarVuelta()
-		gameControl.chequearSiGano()
+		if (gameControl.habilitado()) {
+			gameControl.darVueltaCarta(3) 
+			gameControl.bloquearODarVuelta()
+			gameControl.chequearSiGano()
+		}
 	})
 	keyboard.num3().onPressDo({ 
-		gameControl.darVueltaCarta(5) 
-		gameControl.bloquearODarVuelta()
-		gameControl.chequearSiGano()
+		if (gameControl.habilitado()) {
+			gameControl.darVueltaCarta(5) 
+			gameControl.bloquearODarVuelta()
+			gameControl.chequearSiGano()
+		}
 	})
 	keyboard.num4().onPressDo({ 
-		gameControl.darVueltaCarta(7) 
-		gameControl.bloquearODarVuelta()
-		gameControl.chequearSiGano()
+		if (gameControl.habilitado()) {
+			gameControl.darVueltaCarta(7) 
+			gameControl.bloquearODarVuelta()
+			gameControl.chequearSiGano()
+		}
 	})
 	keyboard.num5().onPressDo({ 
-		gameControl.darVueltaCarta(0) 
-		gameControl.bloquearODarVuelta()
-		gameControl.chequearSiGano()
+		if (gameControl.habilitado()) {
+			gameControl.darVueltaCarta(0) 
+			gameControl.bloquearODarVuelta()
+			gameControl.chequearSiGano()
+		}
 	})
 	keyboard.num6().onPressDo({ 
-		gameControl.darVueltaCarta(2) 
-		gameControl.bloquearODarVuelta()
-		gameControl.chequearSiGano()
+		if (gameControl.habilitado()) {
+			gameControl.darVueltaCarta(2) 
+			gameControl.bloquearODarVuelta()
+			gameControl.chequearSiGano()
+		}
 	})
 	keyboard.num7().onPressDo({ 
-		gameControl.darVueltaCarta(4) 
-		gameControl.bloquearODarVuelta()
-		gameControl.chequearSiGano()
+		if (gameControl.habilitado()) {
+			gameControl.darVueltaCarta(4) 
+			gameControl.bloquearODarVuelta()
+			gameControl.chequearSiGano()
+		}
 	})
 	keyboard.num8().onPressDo({ 
-		gameControl.darVueltaCarta(6) 
-		gameControl.bloquearODarVuelta()
-		gameControl.chequearSiGano()
+		if (gameControl.habilitado()) {
+			gameControl.darVueltaCarta(6) 
+			gameControl.bloquearODarVuelta()
+			gameControl.chequearSiGano()
+		}
 	})
 	
 	
