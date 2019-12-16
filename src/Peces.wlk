@@ -13,18 +13,6 @@ class Carta{
 		alias = nombre.substring(0,1)
 	}
 	
-	method getAlias() {
-		return alias
-	}
-	
-	method getBloqueada() {
-		return bloqueada
-	}
-	
-	method getArriba() {
-		return arriba
-	}
-	
 	method darVuelta() {
 		if (not bloqueada) {
 			arriba = not arriba		
@@ -92,13 +80,13 @@ object gameControl {
 	}
 	
 	method bloquearODarVuelta() {
-		var cartasDadasVuelta = cartas.filter({carta => carta.getArriba() && not carta.getBloqueada()})
-		var esaCartaDadaVuelta = cartasDadasVuelta.filter({carta => carta.getAlias() == ultimoAlias})
+		var cartasDadasVuelta = cartas.filter({carta => carta.arriba() && not carta.bloqueada()})
+		var esaCartaDadaVuelta = cartasDadasVuelta.filter({carta => carta.alias() == ultimoAlias})
 		if (esaCartaDadaVuelta.size() > 1) {
 			esaCartaDadaVuelta.forEach {cartaVolteada => cartaVolteada.bloquear()}
 		} else {
 			if (cartasDadasVuelta.size() > 1) {
-				cartasDadasVuelta.forEach {cartaVolteada => cartaVolteada.darVuelta()}
+				game.schedule(300, {cartasDadasVuelta.forEach {cartaVolteada => cartaVolteada.darVuelta()}})
 			}
 		}
 	}
@@ -106,7 +94,7 @@ object gameControl {
 	method darVueltaCarta(posicion) {
 		var pos = combinaciones2.get(posicion)
 		cartas.find{x => x.position() == pos}.darVuelta()
-		ultimoAlias = cartas.find{x => x.position() == pos}.getAlias()
+		ultimoAlias = cartas.find{x => x.position() == pos}.alias()
 	}
 	
 	method darVueltaTodo() {
@@ -114,15 +102,20 @@ object gameControl {
 	}
 	
 	method chequearSiGano() {
-		if (cartas.filter({carta => not carta.getArriba()}).size() == 0) {
+		if (cartas.filter({carta => not carta.arriba()}).size() == 0) {
 			var pos = combinaciones2.get(1)
 			var primeraCarta = cartas.find{x => x.position() == pos}
-			game.say(primeraCarta, "GANASTE!")
+			var carta = new Carta(nombre = "NemoDory", position = game.at(8,5), arriba = true)
+			game.addVisual(carta)
+			game.say(carta, "GANASTE!")
 		}
 	}
 	
-	method timer(x){
-		game.schedule(5000,{=>x.darVueltaTodo()})
+	method timer(){
+		var carta = new Carta(nombre = "perdistePenguin", position = game.at(10.7,5), arriba = true)
+		game.schedule(10000, {self.darVueltaTodo()})
+		game.schedule(10000, {game.addVisual(carta)})
+		game.schedule(10500, {game.say(carta, "PERDISTE")})
 	}
 }
 	
