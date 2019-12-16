@@ -4,31 +4,57 @@ class Carta{
 	var property nombre
 	var property position
 	var property arriba = false
+	var property bloqueada = false
+	var property alias = ""
 	
 	method image () = if (arriba) nombre + ".jpg" else "nemoCarta.jpg"	
 	
-	method darVuelta(x) {
-		arriba = not arriba
-		//game.schedule(5000, { x => x.arriba(not arriba)  })
+	method setAlias() {
+		alias = nombre.substring(0,1)
 	}
+	
+	method getAlias() {
+		return alias
+	}
+	
+	method getBloqueada() {
+		return bloqueada
+	}
+	
+	method getArriba() {
+		return arriba
+	}
+	
+	method darVuelta() {
+		if (not bloqueada) {
+			arriba = not arriba		
+		}
+	}
+	
+	method bloquear() {
+		bloqueada = true
+	}
+	
 }
 
 object gameControl {
 	
 	var cartas = []
+	
+	var ultimoAlias = ""
 
 	var personajes = [
-		"carta01", 
-		"carta02",
-		"carta03", 
-		"carta04",
-		"carta1", 
-		"carta2", 
-		"carta3", 
-		"carta4"
+		"1carta", 
+		"2carta",
+		"3carta", 
+		"4carta",
+		"1cartaDoble", 
+		"2cartaDoble", 
+		"3cartaDoble", 
+		"4cartaDoble"
 	]
 
-	var property combinaciones = [
+	var property combinaciones2 = [
 		game.at(1,1), 
 		game.at(1,7), 
 		game.at(7,1), 
@@ -39,7 +65,7 @@ object gameControl {
 		game.at(19,7)
 	]
 	
-	var property combinaciones2 = []
+	var property combinaciones = []
 
 	method position() {
 		var x
@@ -49,24 +75,50 @@ object gameControl {
 		return x		
 	}
 	
+	method cargarCombinaciones() {
+		combinaciones2.forEach {combinacion => combinaciones.add(combinacion)}
+	}
+	
 	method inicializar() {
+		self.cargarCombinaciones()
 		personajes.forEach {carta => self.asignarPosicion(carta)}
 	}
 	
 	method asignarPosicion(nombreCarta) {
 		const carta = new Carta( nombre = nombreCarta, position = self.position())
+		carta.setAlias()
 		cartas.add(carta)
 		game.addVisual(carta)
 	}
 	
+	method bloquearODarVuelta() {
+		var cartasDadasVuelta = cartas.filter({carta => carta.getArriba() && not carta.getBloqueada()})
+		var esaCartaDadaVuelta = cartasDadasVuelta.filter({carta => carta.getAlias() == ultimoAlias})
+		if (esaCartaDadaVuelta.size() > 1) {
+			esaCartaDadaVuelta.forEach {cartaVolteada => cartaVolteada.bloquear()}
+		} else {
+			if (cartasDadasVuelta.size() > 1) {
+				cartasDadasVuelta.forEach {cartaVolteada => cartaVolteada.darVuelta()}
+			}
+		}
+	}
+	
 	method darVueltaCarta(posicion) {
 		var pos = combinaciones2.get(posicion)
-		cartas.find{x => x.position() == pos}.darVuelta(x)
-		
-			}
+		cartas.find{x => x.position() == pos}.darVuelta()
+		ultimoAlias = cartas.find{x => x.position() == pos}.getAlias()
+	}
 	
 	method darVueltaTodo() {
 		cartas.forEach {carta => carta.darVuelta()}
+	}
+	
+	method chequearSiGano() {
+		if (cartas.filter({carta => not carta.getArriba()}).size() == 0) {
+			var pos = combinaciones2.get(1)
+			var primeraCarta = cartas.find{x => x.position() == pos}
+			game.say(primeraCarta, "GANASTE!")
+		}
 	}
 	
 	method timer(x){
