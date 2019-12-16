@@ -29,6 +29,8 @@ object gameControl {
 	
 	var cartas = []
 	
+	var property habilitado = true
+	
 	var ultimoAlias = ""
 	
 	var gano = false
@@ -88,7 +90,9 @@ object gameControl {
 			esaCartaDadaVuelta.forEach {cartaVolteada => cartaVolteada.bloquear()}
 		} else {
 			if (cartasDadasVuelta.size() > 1) {
+				habilitado = false
 				game.schedule(300, {cartasDadasVuelta.forEach {cartaVolteada => cartaVolteada.darVuelta()}})
+				game.schedule(310, {habilitado = true})
 			}
 		}
 	}
@@ -104,7 +108,9 @@ object gameControl {
 	}
 	
 	method chequearSiGano() {
-		if (cartas.filter({carta => not carta.arriba()}).size() == 0) {
+		if (cartas.filter({carta => not carta.arriba()}).size() == 0 && 
+			cartas.filter({carta => not carta.bloqueada()}).size() == 0
+		) {
 			gano = true
 			var pos = combinaciones2.get(1)
 			var primeraCarta = cartas.find{x => x.position() == pos}
@@ -115,10 +121,10 @@ object gameControl {
 	}
 	
 	method timer(){
-			var carta = new Carta(nombre = "perdistePenguin", position = game.at(10.7,5), arriba = true)
-			game.schedule(10000, {if (not gano) {self.darVueltaTodo()}})
-			game.schedule(10000, {if (not gano) {game.addVisual(carta)}})
-			game.schedule(10500, {if (not gano) {game.say(carta, "PERDISTE")}})
+			var carta = new Carta(nombre = "perdiste", position = game.at(4,3), arriba = true)
+			game.schedule(12000, {if (not gano) {self.darVueltaTodo()}})
+			game.schedule(12000, {if (not gano) {game.addVisual(carta)}})
+			game.schedule(12500, {if (not gano) {game.say(carta, "PERDISTE")}})
 	}
 }
 	
