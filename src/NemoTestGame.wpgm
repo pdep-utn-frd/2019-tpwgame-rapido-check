@@ -8,78 +8,21 @@ program juego {
 	game.height(14)
 	game.width(25)
 	game.boardGround("background.jpeg")
-	
-	//VISUALES
-	
-	//Asignarle a cada personaje su carta con su posicion
+
 	gameControl.inicializar()
 	gameControl.timer()
 	
-
-
-	//CARTAS
-	
-//	game.addVisual(new Cartas(numero = 1, x= 1, y = 7))
-//	game.addVisual(new Cartas(numero = 2, x= 7, y = 1))
-//	game.addVisual(new Cartas(numero = 3, x= 13, y = 7))
-//	game.addVisual(new Cartas(numero = 4, x= 19, y = 7))
-	
 	
 	//TECLADO
-	//keyboard.enter().onPressDo({ gameControl.darVueltaTodo()})
-	keyboard.num1().onPressDo({ 
-		if (gameControl.habilitado()) {
-			gameControl.darVueltaCarta(1) 
-			gameControl.bloquearODarVuelta()
-			gameControl.chequearSiGano()
-		}
-	})
-	keyboard.num2().onPressDo({ 
-		if (gameControl.habilitado()) {
-			gameControl.darVueltaCarta(3) 
-			gameControl.bloquearODarVuelta()
-			gameControl.chequearSiGano()
-		}
-	})
-	keyboard.num3().onPressDo({ 
-		if (gameControl.habilitado()) {
-			gameControl.darVueltaCarta(5) 
-			gameControl.bloquearODarVuelta()
-			gameControl.chequearSiGano()
-		}
-	})
-	keyboard.num4().onPressDo({ 
-		if (gameControl.habilitado()) {
-			gameControl.darVueltaCarta(7) 
-			gameControl.bloquearODarVuelta()
-			gameControl.chequearSiGano()
-		}
-	})
+	keyboard.num1().onPressDo({ gameControl.jugar(1)})
+	keyboard.num2().onPressDo({ gameControl.jugar(3)})
+	keyboard.num3().onPressDo({ gameControl.jugar(5)})
+	keyboard.num4().onPressDo({ gameControl.jugar(7)})
 	keyboard.num5().onPressDo({ gameControl.jugar(0)})
-	keyboard.num6().onPressDo({ 
-		if (gameControl.habilitado()) {
-			gameControl.darVueltaCarta(2) 
-			gameControl.bloquearODarVuelta()
-			gameControl.chequearSiGano()
-		}
-	})
-	keyboard.num7().onPressDo({ 
-		if (gameControl.habilitado()) {
-			gameControl.darVueltaCarta(4) 
-			gameControl.bloquearODarVuelta()
-			gameControl.chequearSiGano()
-		}
-	})
-	keyboard.num8().onPressDo({ 
-		if (gameControl.habilitado()) {
-			gameControl.darVueltaCarta(6) 
-			gameControl.bloquearODarVuelta()
-			gameControl.chequearSiGano()
-		}
-	})
+	keyboard.num6().onPressDo({ gameControl.jugar(2)})
+	keyboard.num7().onPressDo({ gameControl.jugar(4)})
+	keyboard.num8().onPressDo({ gameControl.jugar(6)})
 	
 	
-	
-	//START
 	game.start()
 }
