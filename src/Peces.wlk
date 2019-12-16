@@ -30,6 +30,8 @@ object gameControl {
 	var cartas = []
 	
 	var ultimoAlias = ""
+	
+	var gano = false
 
 	var personajes = [
 		"1carta", 
@@ -103,6 +105,7 @@ object gameControl {
 	
 	method chequearSiGano() {
 		if (cartas.filter({carta => not carta.arriba()}).size() == 0) {
+			gano = true
 			var pos = combinaciones2.get(1)
 			var primeraCarta = cartas.find{x => x.position() == pos}
 			var carta = new Carta(nombre = "NemoDory", position = game.at(8,5), arriba = true)
@@ -112,10 +115,10 @@ object gameControl {
 	}
 	
 	method timer(){
-		var carta = new Carta(nombre = "perdistePenguin", position = game.at(10.7,5), arriba = true)
-		game.schedule(10000, {self.darVueltaTodo()})
-		game.schedule(10000, {game.addVisual(carta)})
-		game.schedule(10500, {game.say(carta, "PERDISTE")})
+			var carta = new Carta(nombre = "perdistePenguin", position = game.at(10.7,5), arriba = true)
+			game.schedule(10000, {if (not gano) {self.darVueltaTodo()}})
+			game.schedule(10000, {if (not gano) {game.addVisual(carta)}})
+			game.schedule(10500, {if (not gano) {game.say(carta, "PERDISTE")}})
 	}
 }
 	
