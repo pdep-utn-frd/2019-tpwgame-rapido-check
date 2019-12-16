@@ -1,6 +1,6 @@
 import wollok.game.*
 
-class Carta{	
+class Carta {	
 	var property nombre
 	var property position
 	var property arriba = false
@@ -27,12 +27,13 @@ class Carta{
 
 object gameControl {
 	
-	var cartas = []
+	const cartas = []
 	
 	var property habilitado = true
 	
 	var ultimoAlias = ""
-	var personajes = [
+	
+	const personajes = [
 		"1carta", 
 		"2carta",
 		"3carta", 
@@ -81,8 +82,8 @@ object gameControl {
 	}
 	
 	method bloquearODarVuelta() {
-		var cartasDadasVuelta = cartas.filter({carta => carta.arriba() && not carta.bloqueada()})
-		var esaCartaDadaVuelta = cartasDadasVuelta.filter({carta => carta.alias() == ultimoAlias})
+		const cartasDadasVuelta = cartas.filter({carta => carta.arriba() && not carta.bloqueada()})
+		const esaCartaDadaVuelta = cartasDadasVuelta.filter({carta => carta.alias() == ultimoAlias})
 		if (esaCartaDadaVuelta.size() > 1) {
 			esaCartaDadaVuelta.forEach {cartaVolteada => cartaVolteada.bloquear()}
 		} else {
@@ -95,7 +96,7 @@ object gameControl {
 	}
 	
 	method darVueltaCarta(posicion) {
-		var pos = combinaciones2.get(posicion)
+		const pos = combinaciones2.get(posicion)
 		cartas.find{x => x.position() == pos}.darVuelta()
 		ultimoAlias = cartas.find{x => x.position() == pos}.alias()
 	}
@@ -108,19 +109,19 @@ object gameControl {
 		 return cartas.all({carta => carta.arriba() && carta.bloqueada()})
 	}	 	
 	method mensajeGanador(){	 	 
-		var carta = new Carta(nombre = "NemoDory", position = game.at(8,5), arriba = true)
+		const carta = new Carta(nombre = "NemoDory", position = game.at(8,5), arriba = true)
 		game.addVisual(carta) 
 		game.say(carta, "GANASTE!")
 	}
 	
 	method timer(){
-			var segundos = 22
-			var carta = new Carta(nombre = "perdiste", position = game.at(4,3), arriba = true)
+			const segundos = 22
+			const carta = new Carta(nombre = "perdiste", position = game.at(4,3), arriba = true)
 			game.schedule(segundos*1000, {if (not self.chequearSiGano()) {
 						self.darVueltaTodo() 
 						game.addVisual(carta)
+						cartas.forEach{carta => carta.bloquear()}
 						}})
-//			game.schedule(segundos*1000, {if (not gano) {game.addVisual(carta)}})
 			game.schedule(segundos*1000 + 500, {if (not self.chequearSiGano()) {game.say(carta, "PERDISTE")}})
 	}
 	method jugar(pos) {
@@ -134,6 +135,3 @@ object gameControl {
 		}
 	}
 }
-	
-//SCHEDULE
-
