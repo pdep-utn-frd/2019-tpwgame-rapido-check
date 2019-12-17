@@ -29,6 +29,8 @@ object gameControl {
 	
 	const cartas = []
 	
+	var perdio = false
+	
 	var property habilitado = true
 	
 	var ultimoAlias = ""
@@ -106,7 +108,7 @@ object gameControl {
 	}
 	
 	method chequearSiGano() {
-		 return cartas.all({carta => carta.arriba() && carta.bloqueada()})
+		 return cartas.all({carta => carta.arriba() && carta.bloqueada() && not perdio})
 	}	 	
 	method mensajeGanador(){	 	 
 		const carta = new Carta(nombre = "NemoDory", position = game.at(8,5), arriba = true)
@@ -115,10 +117,11 @@ object gameControl {
 	}
 	
 	method timer(){
-			const segundos = 22
+			const segundos = 12
 			const carta = new Carta(nombre = "perdiste", position = game.at(4,3), arriba = true)
 			game.schedule(segundos*1000, {if (not self.chequearSiGano()) {
 						self.darVueltaTodo() 
+						perdio = true
 						game.addVisual(carta)
 						cartas.forEach{carta => carta.bloquear()}
 						}})
